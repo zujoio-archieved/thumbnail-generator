@@ -1,6 +1,6 @@
 {
-  "name": "upload_server",
-  "version": "0.1.0-alpha",
+  "name": "@zujo/thumbnail-generator",
+  "version": "0.0.1-alpha",
   "description": "",
   "main": "index.js",
   "scripts": {
