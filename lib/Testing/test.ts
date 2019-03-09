@@ -1,10 +1,13 @@
 import { connect } from 'socket.io-client';
-import { expect } from 'chai';
+import { expect,should } from 'chai';
+
 import { readFile, unlink } from 'fs';
+
 import { Resize, ScaleThumb, cropthumbCoor, generateThumb, generateThumbwithsize } from '../socketHandlers/thumbnail';
 import { resolve } from 'path';
 import { describe, it } from 'mocha';
 import { join } from 'path';
+
 let socket = null, emit = true;
 let socketUrl = 'http://localhost:3000/';
 let socketOptions = {
@@ -14,13 +17,10 @@ let socketOptions = {
     transports: ['websocket']
 }
 var fileName: String;
-//let mypath = join(__dirname, './Upload');
-
-let filePath = "./test.jpg";
-
-  
 
 let jpgpath = join(__dirname, './Upload');
+let filedir = join(__dirname, './xyz.jpg');
+console.log(jpgpath)
 describe('Connected', () => {
     beforeEach((done) => {
         socket = connect(socketUrl, socketOptions);
@@ -29,27 +29,43 @@ describe('Connected', () => {
         })
         done(null);
     })
-    it('file Resize', (done) => {
-        const resolvingPromise = new Promise( (resolve) => {
-            
-            resolve('promise resolved');
-          });
-        resolvingPromise.then( (result) => {
-            expect(result).to.equal('promise resolved');
-          })
-        
-        // cropthumbCoor(filePath,`${jpgpath}/${fileName}`,`${'.png'}`,20,20,200,200)
-        
-        // new Promise((resolve, reject) => {
-        //         return reject('Error reason!');
-        //       }).then(null, () => {  console.log("pass")
-        //     });
-        done()
-         
-    })
-   
-   
-       
+    it('file Resize', async () => {
+        await Resize(filedir,`${jpgpath}/${fileName}`,`${".jpg"}`,500,500);
+        expect('/home/mayankpandav/ZUJO/TASK/server/dist/Testing/Upload/undefined').to.equal(`${jpgpath}/${fileName}`);
+       await unlink(resolve(__dirname, `./Upload/undefined.jpg`), () =>{
+        console.log('File Deleted')
+        })
+      
+     });
+     it('file cropthumbCoor', async () => {
+        await cropthumbCoor(filedir,`${jpgpath}/${fileName}`,`${".jpg"}`,1,1,1,1);
+        expect('/home/mayankpandav/ZUJO/TASK/server/dist/Testing/Upload/undefined').to.equal(`${jpgpath}/${fileName}`);
+       await unlink(resolve(__dirname, `./Upload/undefined.jpg`), () =>{
+        console.log('File Deleted')
+        })
+     });
+     it('file ScaleThumb', async () => {
+        await ScaleThumb(filedir,`${jpgpath}/${fileName}`,`${".jpg"}`,500,500,0.1);
+        expect('/home/mayankpandav/ZUJO/TASK/server/dist/Testing/Upload/undefined').to.equal(`${jpgpath}/${fileName}`);
+       await unlink(resolve(__dirname, `./Upload/undefined.jpg`), () =>{
+        console.log('File Deleted')
+        })
+     });
+     it('file generateThumbwithsize', async () => {
+        await generateThumbwithsize(filedir,`${jpgpath}/${fileName}`,500,`${".jpg"}`);
+        expect('/home/mayankpandav/ZUJO/TASK/server/dist/Testing/Upload/undefined').to.equal(`${jpgpath}/${fileName}`);
+       await unlink(resolve(__dirname, `./Upload/undefined.jpg`), () =>{
+        console.log('File Deleted')
+        })
+     });
+     it('file generateThumb', async () => {
+        await generateThumb(filedir,`${jpgpath}/${fileName}`,`${".jpg"}`);
+        expect('/home/mayankpandav/ZUJO/TASK/server/dist/Testing/Upload/undefined').to.equal(`${jpgpath}/${fileName}`);
+       await unlink(resolve(__dirname, `./Upload/undefined.jpg`), () =>{
+        console.log('File Deleted')
+        })
+     });
+    
 })
 
 // new Promise((resolve, reject) => {

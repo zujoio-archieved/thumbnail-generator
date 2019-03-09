@@ -13,7 +13,8 @@ export const generateThumb = (source: string, destination: string, type: string)
       await sharp(source)
         .resize(sizes[i])
         .max()
-        .toFile(destination + Math.random() + "thumbnail" + sizes[i] + type)
+        .toFile(destination + type)
+       // .toFile(destination + Math.random() + "thumbnail" + sizes[i] + type)
         .then(async data => await console.log(data))
         .catch(err => console.log(err));
     }
@@ -31,7 +32,8 @@ export const generateThumbwithsize = (source: string, destination: string,sizes:
    await sharp(source)
         .resize(sizes)
         .max()
-        .toFile(destination + Math.random() + "generateThumbwithsize" + sizes + type)
+       // .toFile(destination + Math.random() + "generateThumbwithsize" + sizes + type)
+        .toFile(destination  + type)
         .then(async data => await console.log(data))
         .catch(err => console.log(err));
   })();
@@ -55,7 +57,8 @@ export const ScaleThumb = (source: string, destination: string, type: string, wi
     const targetHeight = Math.ceil(height * ratio)
     await sharp(source)
       .resize(targetWidth, targetHeight)
-      .toFile(destination + "ScaleThumb" + width + height + type)
+     // .toFile(destination + "ScaleThumb" + width + height + type)
+     .toFile(destination  + type)
       .then(async data => {
         await console.log(destination + "ScaleThumb" + width + height + type)
         console.log(data)
@@ -85,7 +88,8 @@ export const cropthumbCoor = (source: string, destination: string, type: string,
         console.log("cropthumbCoor", metadata);
         return image
           .extract({ left, top, width, height })
-          .toFile(destination + Math.random() + "Coordinatorcrop" + type);
+          //.toFile(destination + Math.random() + "Coordinatorcrop" + type);
+          .toFile(destination  + type);
       })
       .then(async data => {
         await console.log("cropthumbCoor", data);
@@ -106,8 +110,8 @@ export const Resize = (source: string, destination: string, type: string, height
   (async () => {
     await sharp(source)
       .resize(width, height)
-      .max()
-      .toFile(destination + Math.random() + "Resize" + type)
+       .max()
+      .toFile(destination + type)
       .then(async data => await console.log("Resize", data))
       .catch(err => console.log(err));
   })();

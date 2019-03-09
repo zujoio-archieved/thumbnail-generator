@@ -14,7 +14,8 @@ exports.generateThumb = (source, destination, type) => {
             await sharp(source)
                 .resize(sizes[i])
                 .max()
-                .toFile(destination + Math.random() + "thumbnail" + sizes[i] + type)
+                .toFile(destination + type)
+                // .toFile(destination + Math.random() + "thumbnail" + sizes[i] + type)
                 .then(async (data) => await console.log(data))
                 .catch(err => console.log(err));
         }
@@ -32,7 +33,8 @@ exports.generateThumbwithsize = (source, destination, sizes, type) => {
         await sharp(source)
             .resize(sizes)
             .max()
-            .toFile(destination + Math.random() + "generateThumbwithsize" + sizes + type)
+            // .toFile(destination + Math.random() + "generateThumbwithsize" + sizes + type)
+            .toFile(destination + type)
             .then(async (data) => await console.log(data))
             .catch(err => console.log(err));
     })();
@@ -52,7 +54,8 @@ exports.ScaleThumb = (source, destination, type, width, height, ratio) => {
         const targetHeight = Math.ceil(height * ratio);
         await sharp(source)
             .resize(targetWidth, targetHeight)
-            .toFile(destination + "ScaleThumb" + width + height + type)
+            // .toFile(destination + "ScaleThumb" + width + height + type)
+            .toFile(destination + type)
             .then(async (data) => {
             await console.log(destination + "ScaleThumb" + width + height + type);
             console.log(data);
@@ -79,7 +82,8 @@ exports.cropthumbCoor = (source, destination, type, top, left, width, height) =>
             console.log("cropthumbCoor", metadata);
             return image
                 .extract({ left, top, width, height })
-                .toFile(destination + Math.random() + "Coordinatorcrop" + type);
+                //.toFile(destination + Math.random() + "Coordinatorcrop" + type);
+                .toFile(destination + type);
         })
             .then(async (data) => {
             await console.log("cropthumbCoor", data);
@@ -99,7 +103,7 @@ exports.Resize = (source, destination, type, height, width) => {
         await sharp(source)
             .resize(width, height)
             .max()
-            .toFile(destination + Math.random() + "Resize" + type)
+            .toFile(destination + type)
             .then(async (data) => await console.log("Resize", data))
             .catch(err => console.log(err));
     })();
