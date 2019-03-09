@@ -1,6 +1,6 @@
 {
   "name": "@zujo/thumbnail-generator",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,13 +14,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sharp": "^0.21.3",
-    "path": "^0.12.7",
-    "express": "^4.16.4",
-    "socket.io": "^2.2.0",
-    "body-parser": "^1.18.3"
-  },
-  "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
@@ -30,5 +23,13 @@
     "mocha": "^6.0.2",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3333"
+   
+  },
+  "dependencies": {
+    "sharp": "^0.21.3",
+    "path": "^0.12.7",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0",
+    "body-parser": "^1.18.3"
   }
 }
