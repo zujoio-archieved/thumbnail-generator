@@ -1,6 +1,6 @@
 {
   "name": "@zujo/thumbnail-generator",
-  "version": "0.0.4-alpha",
+  "version": "0.0.5-alpha",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,6 +11,11 @@
     "prod": "npm run build && npm run start",
     "testing": "nodemon  --exec 'mocha ./dist/Testing/test.js'"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zujoio/thumbnail-generator.git"
+  },
+
   "author": "",
   "license": "ISC",
   "devDependencies": {

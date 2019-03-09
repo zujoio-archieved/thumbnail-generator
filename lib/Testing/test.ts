@@ -14,8 +14,13 @@ let socketOptions = {
     transports: ['websocket']
 }
 var fileName: String;
-let mypath = join(__dirname, './Upload');
-// let filePath = resolve(__dirname, `./Upload/${fileName}`);
+//let mypath = join(__dirname, './Upload');
+
+let filePath = "./test.jpg";
+
+  
+
+let jpgpath = join(__dirname, './Upload');
 describe('Connected', () => {
     beforeEach((done) => {
         socket = connect(socketUrl, socketOptions);
@@ -24,16 +29,33 @@ describe('Connected', () => {
         })
         done(null);
     })
-     it('file Resize', (done) => {
-       // let filepath = 'https://www.google.com/photos/about/static/images/google.svg';
-       let filePath = "./test.jpg";
-        let jpgpath = join(__dirname, './Upload');
-        ScaleThumb(filePath, `${jpgpath}/${fileName}`, `${'.png'}`, 500, 500, 0.1);
+    it('file Resize', (done) => {
+        const resolvingPromise = new Promise( (resolve) => {
+            
+            resolve('promise resolved');
+          });
+        resolvingPromise.then( (result) => {
+            expect(result).to.equal('promise resolved');
+          })
+        
+        // cropthumbCoor(filePath,`${jpgpath}/${fileName}`,`${'.png'}`,20,20,200,200)
+        
+        // new Promise((resolve, reject) => {
+        //         return reject('Error reason!');
+        //       }).then(null, () => {  console.log("pass")
+        //     });
         done()
+         
     })
+   
+   
+       
 })
 
-
+// new Promise((resolve, reject) => {
+//     return reject('Error reason!');
+//   }).then(null, () => {  
+// });
  // socket.on('START', socket => {
         //     console.log("workibng")
 

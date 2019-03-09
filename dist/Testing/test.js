@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const socket_io_client_1 = require("socket.io-client");
-const thumbnail_1 = require("../socketHandlers/thumbnail");
+const chai_1 = require("chai");
 const mocha_1 = require("mocha");
 const path_1 = require("path");
 let socket = null, emit = true;
@@ -13,8 +13,9 @@ let socketOptions = {
     transports: ['websocket']
 };
 var fileName;
-let mypath = path_1.join(__dirname, './Upload');
-// let filePath = resolve(__dirname, `./Upload/${fileName}`);
+//let mypath = join(__dirname, './Upload');
+let filePath = "./test.jpg";
+let jpgpath = path_1.join(__dirname, './Upload');
 mocha_1.describe('Connected', () => {
     beforeEach((done) => {
         socket = socket_io_client_1.connect(socketUrl, socketOptions);
@@ -24,13 +25,24 @@ mocha_1.describe('Connected', () => {
         done(null);
     });
     mocha_1.it('file Resize', (done) => {
-        // let filepath = 'https://www.google.com/photos/about/static/images/google.svg';
-        let filePath = "./test.jpg";
-        let jpgpath = path_1.join(__dirname, './Upload');
-        thumbnail_1.ScaleThumb(filePath, `${jpgpath}/${fileName}`, `${'.png'}`, 500, 500, 0.1);
+        const resolvingPromise = new Promise((resolve) => {
+            resolve('promise resolved');
+        });
+        resolvingPromise.then((result) => {
+            chai_1.expect(result).to.equal('promise resolved');
+        });
+        // cropthumbCoor(filePath,`${jpgpath}/${fileName}`,`${'.png'}`,20,20,200,200)
+        // new Promise((resolve, reject) => {
+        //         return reject('Error reason!');
+        //       }).then(null, () => {  console.log("pass")
+        //     });
         done();
     });
 });
+// new Promise((resolve, reject) => {
+//     return reject('Error reason!');
+//   }).then(null, () => {  
+// });
 // socket.on('START', socket => {
 //     console.log("workibng")
 // })
