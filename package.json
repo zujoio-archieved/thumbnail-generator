@@ -1,6 +1,6 @@
 {
   "name": "@zujo/thumbnail-generator",
-  "version": "0.0.6-alpha",
+  "version": "0.0.7-alpha",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -17,6 +17,18 @@
   },
   "author": "",
   "license": "ISC",
+  "keywords": [
+		"image thumbnail",
+		"thumbnail generator",
+		"thumbanail",
+		"image convertor",
+		"thumbnail convertor",
+		"crop image",
+		"resize",
+    "resize image",
+    "scale crop"
+		
+	],
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",

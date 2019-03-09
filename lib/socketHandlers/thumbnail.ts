@@ -1,5 +1,5 @@
 const sharp = require("sharp");
-
+var DEBUG = true;
 var sizes = [650, 750, 850, 950, 1050];
 /**
  * Multiple Resolution from one file....
@@ -15,8 +15,8 @@ export const generateThumb = (source: string, destination: string, type: string)
         .max()
         .toFile(destination + type)
        // .toFile(destination + Math.random() + "thumbnail" + sizes[i] + type)
-        .then(async data => await console.log(data))
-        .catch(err => console.log(err));
+        .then(async data => await DEBUG && console.log(data))
+        .catch(err => DEBUG && console.log(err));
     }
   })();
 };
@@ -34,8 +34,8 @@ export const generateThumbwithsize = (source: string, destination: string,sizes:
         .max()
        // .toFile(destination + Math.random() + "generateThumbwithsize" + sizes + type)
         .toFile(destination  + type)
-        .then(async data => await console.log(data))
-        .catch(err => console.log(err));
+        .then(async data => await DEBUG && console.log(data))
+        .catch(err => DEBUG && console.log(err));
   })();
 };
 
@@ -61,9 +61,9 @@ export const ScaleThumb = (source: string, destination: string, type: string, wi
      .toFile(destination  + type)
       .then(async data => {
         await console.log(destination + "ScaleThumb" + width + height + type)
-        console.log(data)
+        DEBUG && console.log(data)
       })
-      .catch(err => console.log(err));
+      .catch(err => DEBUG && console.log(err));
 
   })();
 };
@@ -85,14 +85,14 @@ export const cropthumbCoor = (source: string, destination: string, type: string,
     image
       .metadata()
       .then(metadata => {
-        console.log("cropthumbCoor", metadata);
+        DEBUG &&  console.log("cropthumbCoor", metadata);
         return image
           .extract({ left, top, width, height })
           //.toFile(destination + Math.random() + "Coordinatorcrop" + type);
           .toFile(destination  + type);
       })
       .then(async data => {
-        await console.log("cropthumbCoor", data);
+        await DEBUG && console.log("cropthumbCoor", data);
       });
   })();
 };
@@ -112,7 +112,7 @@ export const Resize = (source: string, destination: string, type: string, height
       .resize(width, height)
        .max()
       .toFile(destination + type)
-      .then(async data => await console.log("Resize", data))
-      .catch(err => console.log(err));
+      .then(async data => await DEBUG && console.log("Resize", data))
+      .catch(err => DEBUG && console.log(err));
   })();
 };
