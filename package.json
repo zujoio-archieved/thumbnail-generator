@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sharp": "^0.21.3",
+    "sharp": "^0.23.2",
     "path": "^0.12.7",
     "express": "^4.16.4",
     "socket.io": "^2.2.0",
