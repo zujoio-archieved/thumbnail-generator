@@ -23,7 +23,7 @@
   "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^7.0.1",
     "@types/sharp": "^0.21.2",
     "@types/socket.io": "^2.1.2",
     "chai": "^4.2.0",
